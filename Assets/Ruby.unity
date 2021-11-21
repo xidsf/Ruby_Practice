@@ -3392,10 +3392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1288923579, guid: e3433c99b5b828a468901b260ca89293, type: 3}
-      propertyPath: vertical
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 103227796694106580, guid: e3433c99b5b828a468901b260ca89293, type: 3}
       propertyPath: m_Name
       value: Robot
@@ -3457,10 +3453,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ruby
       objectReference: {fileID: 0}
-    - target: {fileID: 3577106361853229001, guid: db92fb690f0d1bf4ca9b34ecc2906734, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3577106361853229003, guid: db92fb690f0d1bf4ca9b34ecc2906734, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3504,6 +3496,10 @@ PrefabInstance:
     - target: {fileID: 3577106361853229003, guid: db92fb690f0d1bf4ca9b34ecc2906734, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013720872941564395, guid: db92fb690f0d1bf4ca9b34ecc2906734, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db92fb690f0d1bf4ca9b34ecc2906734, type: 3}
