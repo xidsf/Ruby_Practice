@@ -18,6 +18,8 @@ public class RubyController : MonoBehaviour
 
     Animator animator;
     Rigidbody2D rigidbody2d;
+    AudioSource audioSource;
+    public AudioClip clipSound;
 
     public int Health
     {
@@ -33,6 +35,7 @@ public class RubyController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +75,7 @@ public class RubyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
+            PlaySound(clipSound);
         }
 
         //float horizontal = Input.GetAxis("Horizontal");
@@ -82,6 +86,24 @@ public class RubyController : MonoBehaviour
         //position.y = position.y + 3.0f * vertical * Time.deltaTime;
         //transform.position = position;
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+            if (hit.collider != null)
+            {
+                NPC character = hit.collider.GetComponent<NPC>();
+                if (character != null)
+                {
+                    character.DisplayDialog();
+                }
+            }
+        }
+
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     void Launch()
@@ -89,7 +111,7 @@ public class RubyController : MonoBehaviour
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.Launch(lookDirection, 300);
+        projectile.Launch(lookDirection, 600);
 
         animator.SetTrigger("Launch");
     }
@@ -108,6 +130,6 @@ public class RubyController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
-        Debug.Log(currentHealth + "/" + maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 }
